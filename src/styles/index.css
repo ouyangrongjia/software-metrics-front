@@ -1,15 +1,4 @@
 
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    background-color: transparent;
-}
-
-::-webkit-scrollbar {
-     width: 0px !important;
-     background-color: transparent;
- }
-
 :root{
     --button-color: #5d6894;
     --button-color1: #ffffff;
@@ -29,6 +18,17 @@
     --decoration-line-color: #cccccc;
     --shadow-color: rgba(0, 0, 0, 0.23);
 }
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar {
+     width: 0px !important;
+     background-color: transparent;
+ }
 
 html,
 body,
