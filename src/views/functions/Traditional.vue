@@ -8,7 +8,7 @@
           <div style="width: 100%">
             <el-text class="mx-1" type="info">{{i.timeStamp + ' ' +i.measure_type + '度量'}}</el-text>
           </div>
-          <el-button type="info" @click="removeStorage(i.name + i.timeStamp)">删除</el-button>
+          <el-button type="info" @click="removeStorage(i.id)">删除</el-button>
         </div>
         <el-collapse>
           <el-collapse-item>

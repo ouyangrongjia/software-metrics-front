@@ -8,7 +8,7 @@
           <div style="width: 100%">
             <el-text class="mx-1" type="info">{{i.timeStamp + ' ' +i.measure_type + '度量'}}</el-text>
           </div>
-          <el-button type="info" @click="removeStorage(i.name + i.timeStamp)">删除</el-button>
+          <el-button type="info" @click="removeStorage(i.id)">删除</el-button>
         </div>
         <el-collapse>
           <el-collapse-item>
@@ -21,19 +21,29 @@
     </el-card>
     <el-card class="cards-2">
       <el-container style="height:95%; display: flex; flex-direction: column">
-        <el-main class="fileList" style="display: flex; flex-direction: column">
-          <el-table :data="fileList" stripe>
-            <el-table-column prop="name" label="文件名"/>
-            <el-table-column prop="clazz" label="Class"/>
-            <el-table-column prop="type" label="Type"/>
-            <el-table-column prop="wmc" label="WMC"/>
-            <el-table-column prop="rfc" label="RFC"/>
-            <el-table-column prop="lcom" label="LCOM"/>
-            <el-table-column prop="cbo" label="CBO" />
-            <el-table-column prop="dit" label="DIT" />
-            <el-table-column prop="noc" label="NOC" />
-          </el-table>
-          <div id="chart" style="width: 100%;height: 400px;background:#ffffff" v-if="fileList.length > 1"></div>
+        <el-main class="fileList" style="display: flex; flex-direction: column; overflow: auto">
+          <div>
+            <el-table :data="fileList" stripe>
+              <el-table-column prop="name" label="文件名"/>
+            </el-table>
+          </div>
+          <div v-for="i in fileList.length" :key="i" v-show="fileList[i-1].classes !==undefined">
+            <h3>
+              {{fileList[i-1].name}}
+            </h3>
+            <div>
+              <el-table :data="fileList[i-1].classes" stripe v-if="fileList[i-1].classes !== undefined">
+                <el-table-column prop="class" label="Class"/>
+                <el-table-column prop="wmc" label="WMC"/>
+                <el-table-column prop="rfc" label="RFC"/>
+                <el-table-column prop="lcom" label="LCOM"/>
+                <el-table-column prop="cbo" label="CBO" />
+                <el-table-column prop="dit" label="DIT" />
+                <el-table-column prop="noc" label="NOC" />
+              </el-table>
+            </div>
+            <div :id="'chart-'+ i" style="width: 800px; height: 400px; background:#ffffff"></div>
+          </div>
         </el-main>
         <el-footer style="height: 100px">
           <el-upload
@@ -86,12 +96,14 @@ export default {
           response =>{
             this.fileList = response
             this.storageData('XML')
-            this.drawLine('chart')
+            for(let i = 0; i < this.fileList.length; i ++){
+              this.drawLine('chart-', i)
+            }
           }
       )
     },
-    drawLine(id) {
-      this.charts = echarts.init(document.getElementById(id))
+    drawLine(id, i) {
+      this.charts = echarts.init(document.getElementById(id+ (i + 1).toString()))
       this.charts.setOption({
         title: {
           left: '3%',
@@ -125,7 +137,7 @@ export default {
           axisTick: {
             alignWithLabel: true //保证刻度线和标签对齐
           },
-          data: ["noc", "rfc", "dit", "wmc", "lcom", "cbo"] //x坐标的名称
+          data: ["WMC", "RFC", "LCOM", "CBO", "DIT", "NOC"] //x坐标的名称
         },
         yAxis: {
           type: 'value',
@@ -135,15 +147,16 @@ export default {
         }
       })
       let list = []
-      this.fileList.forEach(
+      this.fileList[i].classes.forEach(
           item => {
+            console.log(item)
             let datas = []
-            datas.push(item.noc)
-            datas.push(item.rfc)
-            datas.push(item.dit)
             datas.push(item.wmc)
+            datas.push(item.rfc)
             datas.push(item.lcom)
             datas.push(item.cbo)
+            datas.push(item.dit)
+            datas.push(item.noc)
             let dataLists = {
               name : item.name,
               type : 'line',

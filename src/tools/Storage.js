@@ -4,9 +4,10 @@ import {getDate} from "@/tools/Date";
 export function storageData(type){
     this.fileList.forEach(
         i => {
+            i.id = Date.now().toString()
             i.timeStamp = getDate()
             i.measure_type = type
-            localStorage.setItem(i.name + i.timeStamp, JSON.stringify(i))
+            localStorage.setItem(i.id, JSON.stringify(i))
         }
     )
     this.getStorage()
@@ -14,7 +15,7 @@ export function storageData(type){
 // 调用存储
 export function getStorage(){
     let list = []
-    for(var i = 0; i < localStorage.length; i++){
+    for(var i = localStorage.length - 1; i >= 0; i--){
         let key = localStorage.key(i)
         list.push(JSON.parse(localStorage.getItem(key)))
     }

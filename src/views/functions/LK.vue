@@ -8,7 +8,7 @@
           <div style="width: 100%">
             <el-text class="mx-1" type="info">{{i.timeStamp + ' ' +i.measure_type + '度量'}}</el-text>
           </div>
-          <el-button type="info" @click="removeStorage(i.name + i.timeStamp)">删除</el-button>
+          <el-button type="info" @click="removeStorage(i.id)">删除</el-button>
         </div>
         <el-collapse>
           <el-collapse-item>
@@ -24,7 +24,7 @@
         <el-main class="fileList" style="display: flex; flex-direction: column">
           <el-table :data="fileList" stripe>
             <el-table-column prop="name" label="文件名"/>
-            <el-table-column prop="clazz" label="Class"/>
+            <el-table-column prop="class" label="Class"/>
             <el-table-column prop="type" label="Type"/>
             <el-table-column prop="cs" label="CS（类模板）"/>
             <el-table-column prop="noo" label="NOO（方法重写数量）"/>
