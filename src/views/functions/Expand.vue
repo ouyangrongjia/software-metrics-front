@@ -1,6 +1,6 @@
 <template>
   <div class="frame-container">
-    <el-card class="cards-1">
+    <!-- <el-card class="cards-1">
       <h4>历史记录</h4>
       <el-card v-for="i in current_data " :key="i" class="file-card">
         <div class="file-card-header">
@@ -18,7 +18,7 @@
           </el-collapse-item>
         </el-collapse>
       </el-card>
-    </el-card>
+    </el-card> -->
     <el-card class="cards-2">
       <el-container style="height:95%; display: flex; flex-direction: column">
         <el-main class="fileList" style="display: flex; flex-direction: column">

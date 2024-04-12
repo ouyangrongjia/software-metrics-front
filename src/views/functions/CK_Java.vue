@@ -82,9 +82,10 @@ export default {
       for(let i in this.fileList){
         files.append('file',this.fileList[i].raw)
       }
-      uploadData(this.IP,files).then(
+      uploadData('/ck/java',files).then(
           response =>{
             this.fileList = response
+            console.log(this.fileList)
             this.storageData('Java')
             this.drawLine('chart')
           }
