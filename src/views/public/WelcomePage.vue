@@ -2,9 +2,9 @@
   <div class="welcome-page">
     <div class="welcome-button">
       <div class="welcome-title">
-        Metrics 软件度量
+        软件度量
       </div>
-      <el-button @click="$router.push('home')" type="primary">开始使用</el-button>
+      <el-button @click="$router.push('home')" type="primary">进入主页</el-button>
     </div>
   </div>
 </template>
@@ -17,10 +17,11 @@ export default {
 
 <style scoped>
 .divs{
+  top:250px;
   width:100px;
   height:100px;
   position:relative;
-  animation:dragDown 0.2s;
+  /* animation:dragDown 0.2s; */
 }
 @keyframes dragDown {
   0% {top : -200px;}
@@ -34,15 +35,20 @@ export default {
   background-size: 100% 100%;
 }
 .welcome-title{
+  position: relative;
+  /* left: -25vw; */
   margin-bottom: 40px;
+  /*top:250px;*/
   color: white;
   font-size: 80px;
   text-shadow: 2px 2px 2px #000000,-2px 2px 2px #000000, 2px 2px 2px #000,2px -2px 2px #000;
 }
 .welcome-button{
   position:relative;
-  animation: dragDown 2s;
-  animation-fill-mode: forwards;
+  top:250px;
+  /* left: -25vw; */
+  /* animation: dragDown 2s;
+  animation-fill-mode: forwards; */
 }
 .el-button--primary{
   font-size: 30px;

@@ -16,14 +16,14 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/home',
     name: 'home',
-    redirect: '/CK_XML',
+    redirect: '/CK_Java',
     component: MainPage,
     children: [
-      {
-        path: '/CK_XML',
-        name: 'CK_XML',
-        component: CK_XML
-      },
+      // {
+      //   path: '/CK_XML',
+      //   name: 'CK_XML',
+      //   component: CK_XML
+      // },
       {
         path: '/CK_Java',
         name: 'CK_Java',

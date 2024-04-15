@@ -1,20 +1,20 @@
 
 :root{
-    --button-color: #5d6894;
+    --button-color: #00A7FF;
     --button-color1: #ffffff;
-    --button-hover-color: #d9ccde;
-    --button-hover-color1: #5d6894;
-    --button-clicked-color: #959fcc;
-    --button-clicked-color1: #959fcc;
+    --button-hover-color: #00D5EF;
+    --button-hover-color1: #00A7FF;
+    --button-clicked-color: #00A7FF;
+    --button-clicked-color1: #00A7FF;
     --main-background-color: #ffffff;
-    --main-background-color1: #5d6894;
+    --main-background-color1: #00A7FF;
     --button-hover-background-color: #ffffff;
     --button-hover-background-color1: #ffffff;
     --button-clicked-background-color: #f8f8f8;
-    --button-clicked-background-color1: #5d6894;
+    --button-clicked-background-color1: #4D6BE0;
     --button-clicked-border-color: #ffffff;
     --button-clicked-border-color1: #ffffff;
-    --button-hover-bottom-line-color: #d9ccde;
+    --button-hover-bottom-line-color: #00D5EF;
     --decoration-line-color: #cccccc;
     --shadow-color: rgba(0, 0, 0, 0.23);
 }
