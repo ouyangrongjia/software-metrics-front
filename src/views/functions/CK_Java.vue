@@ -1,24 +1,5 @@
 <template>
   <div class="frame-container">
-    <el-card class="cards-1">
-      <h4>历史记录</h4>
-      <el-card v-for="i in current_data " :key="i" class="file-card">
-        <div class="file-card-header">
-          <span>{{i.name}}</span>
-          <div style="width: 100%">
-            <el-text class="mx-1" type="info">{{i.timeStamp + ' ' +i.measure_type + '度量'}}</el-text>
-          </div>
-          <el-button type="info" @click="removeStorage(i.id)">删除</el-button>
-        </div>
-        <el-collapse>
-          <el-collapse-item>
-            <el-descriptions v-for="(j, index) in i" :key="j" size="small">
-              <el-descriptions-item :label="index + ':'">{{j}}</el-descriptions-item>
-            </el-descriptions>
-          </el-collapse-item>
-        </el-collapse>
-      </el-card>
-    </el-card>
     <el-card class="cards-2">
       <el-container style="height:95%; display: flex; flex-direction: column">
         <el-main class="fileList" style="display: flex; flex-direction: column">
@@ -52,6 +33,25 @@
           </el-upload>
         </el-footer>
       </el-container>
+    </el-card>
+    <el-card class="cards-1">
+      <h4>历史记录</h4>
+      <el-card v-for="i in current_data " :key="i" class="file-card">
+        <div class="file-card-header">
+          <span>{{i.name}}</span>
+          <div style="width: 100%">
+            <el-text class="mx-1" type="info">{{i.timeStamp + ' ' +i.measure_type + '度量'}}</el-text>
+          </div>
+          <el-button type="info" @click="removeStorage(i.id)">删除</el-button>
+        </div>
+        <el-collapse>
+          <el-collapse-item>
+            <el-descriptions v-for="(j, index) in i" :key="j" size="small">
+              <el-descriptions-item :label="index + ':'">{{j}}</el-descriptions-item>
+            </el-descriptions>
+          </el-collapse-item>
+        </el-collapse>
+      </el-card>
     </el-card>
   </div>
 </template>
