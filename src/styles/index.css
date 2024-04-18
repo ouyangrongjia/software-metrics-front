@@ -6,7 +6,7 @@
     --button-hover-color1: #00A7FF;
     --button-clicked-color: #00A7FF;
     --button-clicked-color1: #00A7FF;
-    --main-background-color: #ffffff;
+    --main-background-color: #fffbfb7e;
     --main-background-color1: #00A7FF;
     --button-hover-background-color: #ffffff;
     --button-hover-background-color1: #ffffff;
@@ -15,8 +15,10 @@
     --button-clicked-border-color: #ffffff;
     --button-clicked-border-color1: #ffffff;
     --button-hover-bottom-line-color: #00D5EF;
-    --decoration-line-color: #cccccc;
+    --decoration-line-color: #ffffff00;
     --shadow-color: rgba(0, 0, 0, 0.23);
+    --history-card-color:rgba(225,225,225,0.8);
+    --main-card-color:rgba(225,225,225,0.85);
 }
 
 ::-webkit-scrollbar-track {
@@ -38,12 +40,13 @@ body,
     height: 100%;
 }
 .hole-container{
-    text-align: center;
+    text-align: left;
     height: 100%;
 }
 .main-container{
+    /* justify-content: right; */
     padding: 20px 20px;
-    background-image: url("../assets/background1.jpg");
+    background-image: url("../assets/background2.jpg");
     z-index: 1;
 }
 .frame-container{
@@ -64,10 +67,13 @@ body,
 .cards-1{
     margin: 20px;
     height: 100%;
+    text-align: center;
     width: calc(30% - 20px);
     overflow: auto;
+    /* background-color: var(--history-card-color); */
 }
 .file-card{
+    text-align: center;
     margin-bottom: 10px;
     padding: 7px;
 }
@@ -80,7 +86,8 @@ body,
 .cards-2{
     margin: 20px;
     height: 100%;
-    width: calc(70% - 20px)
+    width: calc(70% - 20px);
+    /* background-color: var(--main-card-color); */
 }
 .el-header{
     background-color: var(--main-background-color);
