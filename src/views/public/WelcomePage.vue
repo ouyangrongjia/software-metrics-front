@@ -2,9 +2,9 @@
   <div class="welcome-page">
     <div class="welcome-button">
       <div class="welcome-title">
-        软件度量
+        Software-metrics
       </div>
-      <el-button @click="$router.push('home')" type="primary">进入主页</el-button>
+      <el-button @click="$router.push('home')" type="primary">Enter</el-button>
     </div>
   </div>
 </template>

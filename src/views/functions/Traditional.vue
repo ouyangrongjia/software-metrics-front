@@ -5,13 +5,13 @@
         <el-main class="fileList" style="display: flex; flex-direction: column; overflow: auto">
           <div style="height: 500px; width: 100%">
             <el-table :data="fileList" stripe style="height: 500px">
-              <el-table-column prop="name" label="文件名" width="180px"/>
-              <el-table-column prop="loc" label="LOC（代码行）"/>
-              <el-table-column prop="cc" label="CC（圈复杂度）"/>
-              <el-table-column prop="cp" label="CP（注释占比）" />
+              <el-table-column prop="name" label="FileName" width="180px"/>
+              <el-table-column prop="loc" label="LOC"/>
+              <el-table-column prop="cc" label="CC"/>
+              <el-table-column prop="cp" label="CP" />
             </el-table>
           </div>
-          <div id="chart" style="width: 100%; height: 300px; background:#ffffff" v-if="fileList.length > 1"></div>
+          <div id="chart" style="width: 100%; height: 300px; background:#ffffff"></div>
           <div style="width: 100%">
             <div v-for="i in fileList.length" :key="i" :id="'chart' + i" style="width: 50%;height: 300px;background:#ffffff; display: inline-block"></div>
           </div>
@@ -26,23 +26,23 @@
               :show-file-list="false"
           >
             <template #trigger>
-              <el-button type="primary">上传文件</el-button>
+              <el-button type="primary">Upload</el-button>
             </template>
             <div style="width: 40px"></div>
-            <el-button type="primary" @click="submitUpload">开始度量</el-button>
+            <el-button type="primary" @click="submitUpload">Metric</el-button>
           </el-upload>
         </el-footer>
       </el-container>
     </el-card>
     <el-card class="cards-1">
-      <h4>历史记录</h4>
+      <h4>Histroy</h4>
       <el-card v-for="i in current_data " :key="i" class="file-card">
         <div class="file-card-header">
           <span>{{i.name}}</span>
           <div style="width: 100%">
             <el-text class="mx-1" type="info">{{i.timeStamp + ' ' +i.measure_type + '度量'}}</el-text>
           </div>
-          <el-button type="info" @click="removeStorage(i.id)">删除</el-button>
+          <el-button type="info" @click="removeStorage(i.id)">Delete</el-button>
         </div>
         <el-collapse>
           <el-collapse-item>
@@ -86,12 +86,12 @@ export default {
           response =>{
             this.fileList = response
             this.storageData('传统')
-            if(this.fileList.length > 1)
+            if(this.fileList.length >= 1)
               this.drawLine('chart')
-            for(let i = 0; i <= this.fileList.length; i++){
-              console.log('chart'+i.toString())
-              this.drawLine1(i)
-            }
+            //for(let i = 0; i <= this.fileList.length; i++){
+              //console.log('chart'+i.toString())
+              //this.drawLine1(i)
+           // }
           }
       )
     },
@@ -101,7 +101,7 @@ export default {
         title: {
           left: '3%',
           top: '5%',
-          text: "数据比对图",
+          text: "Figure",
         },
         tooltip: {
           trigger: 'axis'
@@ -110,7 +110,7 @@ export default {
           align: 'right',//文字在前图标在后
           left: '3%',
           top: '15%',
-          data: ['近一周']
+          data: ['last week']
         },
         grid: {
           top: '30%',
